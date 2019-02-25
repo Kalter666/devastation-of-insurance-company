@@ -9,14 +9,9 @@ export class MarkovChain {
   }
 
   private findNextProb(probs: any): any {
-    let acc: Matrix | number[] | number[][];
-    const length = probs.length - 1;
-    if (length === 0) {
-      acc = multiply(probs[length - 1], probs[length - 1]);
-    } else {
-      acc = multiply(probs[length - 1], probs[length - 2]);
-    }
-    return acc;
+    const first = probs[0];
+    const last = probs[probs.length - 1];
+    return multiply(first, last);
   }
 
   private findProb(i: number): Matrix {
