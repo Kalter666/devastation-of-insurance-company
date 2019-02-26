@@ -102,4 +102,27 @@ class Devastation {
     const sum = this.findSum(s, a, r, sigma, k);
     return 1 - left * sum;
   }
+
+  private buildProbs() {
+    const a = this.a;
+    const r = this.r;
+    const sigma = this.sigma;
+    const capitalRange = this.capitalRange;
+    const k = this.k;
+    const approx = this.approx;
+
+    const capitals = this.buildCapitals(capitalRange, approx);
+    const probs = [];
+
+    for (const s of capitals) {
+      const prob = this.findProbability(s, a, r, sigma, k);
+      probs.push(prob);
+    }
+
+    this.probs = probs;
+  }
+
+  get probabilities() {
+    return this.probs;
+  }
 }
