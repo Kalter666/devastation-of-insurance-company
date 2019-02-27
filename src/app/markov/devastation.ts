@@ -1,12 +1,12 @@
 import { exp } from 'mathjs';
 import * as mathjs from 'mathjs';
 
-interface CapitalRange {
+export interface CapitalRange {
   min: number;
   max: number;
 }
 
-class Devastation {
+export class Devastation {
   // constant, insurance payments
   private a: number;
   // constant, rate of payments
@@ -30,12 +30,16 @@ class Devastation {
     k: number = 10,
     approx: number = 0.1
   ) {
+    if (!a || !r || !sigma || !capitalRange || !k || !approx) {
+      throw new Error('Not enough parameters!');
+    }
     this.a = a;
     this.r = r;
     this.sigma = sigma;
     this.capitalRange = capitalRange;
     this.k = k;
     this.approx = approx;
+    this.buildProbs();
   }
 
   private buildCapitals(capitalRange: CapitalRange, approx: number): number[] {
@@ -51,7 +55,11 @@ class Devastation {
   }
 
   private findExp(s: number, a: number, r: number, sigma: number): number {
-    return exp((s - a * r) / ((1 + sigma) * a));
+    const exponent = exp((s - a * r) / ((1 + sigma) * a));
+    if (isNaN(exponent)) {
+      throw new Error('Cannot find exponent.');
+    }
+    return exponent;
   }
 
   private findUnderSum(
@@ -62,9 +70,13 @@ class Devastation {
     n: number
   ): number {
     const scope = { r, a, sigma, s, n };
-    const func = `((-1) ^ n) * (s - a * r) ^ n /
-     ((1 + sigma) ^ n) * (a ^ n) * r!`;
-    return mathjs.eval(func, scope);
+    const func = `((-1) ^ n * (s - a * r) ^ n) /
+     ((1 + sigma) ^ n * a ^ n * r!)`;
+    const res = mathjs.eval(func, scope);
+    if (isNaN(res)) {
+      throw new Error('Cannot find under sum');
+    }
+    return res;
   }
 
   private findPartOfSum(
@@ -112,10 +124,14 @@ class Devastation {
     const approx = this.approx;
 
     const capitals = this.buildCapitals(capitalRange, approx);
+    this.S = capitals;
     const probs = [];
 
     for (const s of capitals) {
       const prob = this.findProbability(s, a, r, sigma, k);
+      if (isNaN(prob)) {
+        throw new Error('Cannot find prob');
+      }
       probs.push(prob);
     }
 
@@ -124,5 +140,12 @@ class Devastation {
 
   get probabilities() {
     return this.probs;
+  }
+
+  get capitals() {
+    if (!this.S || this.S === []) {
+      this.S = this.buildCapitals(this.capitalRange, this.approx);
+    }
+    return this.S;
   }
 }
