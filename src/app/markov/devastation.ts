@@ -46,7 +46,7 @@ export class Devastation {
     const capitals: number[] = [];
     for (
       let i = capitalRange.min * 10;
-      i < capitalRange.max * 10;
+      i <= capitalRange.max * 10;
       i += approx * 10
     ) {
       capitals.push(i / 10);
