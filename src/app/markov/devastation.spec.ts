@@ -4,14 +4,14 @@ describe('Devastation model test', () => {
   let service: Devastation;
 
   it('shoud create devastation model', () => {
-    const r = .001;
+    const r = 1;
     const capitalRange: CapitalRange = {
-      min: 1,
-      max: 10
+      min: 0,
+      max: 20
     };
-    const a = .1;
+    const a = 11;
     const sigma = .5;
-    const k = 100;
+    const k = 10;
     service = new Devastation(a, r, sigma, capitalRange, k, .5);
     expect(service).toBeDefined();
   });

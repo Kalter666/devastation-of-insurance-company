@@ -97,6 +97,9 @@ export class Devastation {
     k: number
   ): number {
     let sum = 0;
+    if (k < 0) {
+      throw new Error ('k - cannot be below 0');
+    }
     for (let i = 0; i <= k; i++) {
       sum += this.findPartOfSum(s, a, r, sigma, i);
     }
