@@ -1,6 +1,66 @@
-<div class="form-group">
-  <button class="button" (click)="onCalculate()">Calculate</button>
-</div>
+<form class="form-group" [formGroup]="calculateGroup">
+  <div class="field">
+    <label class="label">
+      Payments rate:
+    </label>
+    <div class="control">
+      <input type="number" class="input" formControlName="r">
+    </div>
+  </div>
+
+  <div formGroupName="capitalRange">
+    <span class="text-left is-size-4 font-weight-bold">
+      Capital Range:
+    </span>
+    <div class="field is-grouped">
+      <label class="label">Min: </label>
+      <div class="control">
+        <input type="number" class="input" formControlName="min">
+      </div>
+
+      <label class="label">Max: </label>
+      <div class="control">
+        <input type="number" class="input" formControlName="max">
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">
+      Payment value:
+    </label>
+    <div class="control">
+      <input type="number" class="input" formControlName="a">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">
+      K:
+    </label>
+    <div class="control">
+      <input type="number" class="input" formControlName="k">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">
+      &Theta;:
+    </label>
+    <div class="control">
+      <input type="number" class="input" formControlName="theta">
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-success" (click)="onCalculate()">Calculate</button>
+    </div>
+    <div class="control">
+      <button class="button is-danger" (click)="onClear()">Clear</button>
+    </div>
+  </div>
+</form>
 <hr>
 <div *ngIf="graphVisible; else notValid">
   <app-graph [multi]="multi"></app-graph>
