@@ -8,28 +8,16 @@ import { CapitalRange, Devastation } from '../markov/devastation';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-  single: any[];
   multi: any[];
-
-  view: any[] = [700, 400];
+  graphVisible = false;
 
   devastation: Devastation;
 
-  // options
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = false;
-  showXAxisLabel = true;
-  xAxisLabel = 'S - capital';
-  showYAxisLabel = true;
-  yAxisLabel = 'P(S)';
+  constructor() {}
 
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
+  ngOnInit() {}
 
-  constructor() {
+  onCalculate() {
     const r = 1;
     const capitalRange: CapitalRange = {
       min: 0,
@@ -52,11 +40,6 @@ export class ChartComponent implements OnInit {
       });
     }
     this.multi = [res];
+    this.graphVisible = true;
   }
-
-  onSelect(event) {
-    console.log(event);
-  }
-
-  ngOnInit() {}
 }

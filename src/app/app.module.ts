@@ -7,9 +7,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
+import { GraphComponent } from './chart/graph/graph.component';
 
 @NgModule({
-  declarations: [AppComponent, ChartComponent],
+  declarations: [AppComponent, ChartComponent, GraphComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

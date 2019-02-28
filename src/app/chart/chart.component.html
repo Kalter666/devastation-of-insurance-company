@@ -1,12 +1,10 @@
-<ngx-charts-line-chart
-[view]="view"
-[results]="multy"
-[xAxis]="showXAxis"
-[yAxis]="showYAxis"
-[legend]="showLegend"
-[scheme]="colorScheme"
-[showXAxisLabel]="showXAxisLabel"
-[showYAxisLabel]="showYAxisLabel"
-[xAxisLabel]="xAxisLabel"
-[yAxisLabel]="yAxisLabel"
-(select)="onSelect($event)"></ngx-charts-line-chart>
+<div class="form-group">
+  <button class="button" (click)="onCalculate()">Calculate</button>
+</div>
+<hr>
+<div *ngIf="graphVisible; else notValid">
+  <app-graph [multi]="multi"></app-graph>
+</div>
+<ng-template #notValid>
+  <h1>Check yor input!</h1>
+</ng-template>
