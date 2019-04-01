@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Devastation } from '../markov/devastation';
-import { DataPreparer } from './../shared/data-preparer';
+import { DataPreparer } from '../shared/data-preparer';
+import { Devastation2 } from './../markov/model2';
 
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss']
+  selector: 'app-model2',
+  templateUrl: './model2.component.html',
+  styleUrls: ['./model2.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class Model2Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
 
   calculateGroup = new FormGroup({
-    r: new FormControl(1, [Validators.required]),
     a: new FormControl(11, [Validators.required]),
     theta: new FormControl(0.5, [Validators.required]),
-    k: new FormControl(10, [Validators.required]),
     capitalRange: new FormGroup({
       min: new FormControl(0, [Validators.required]),
       max: new FormControl(20, [Validators.required])
@@ -41,16 +39,20 @@ export class ChartComponent implements OnInit {
     setTimeout(() => (this.graphVisible = true), 1);
   }
 
+  buildDevastation({ a, theta, capitalRange }) {
+    const devastation = new Devastation2(
+      capitalRange.min,
+      capitalRange.max,
+      theta,
+      a
+    );
+    const probs = devastation.devastations;
+    const capitals = devastation.capitals;
+    return { probs, capitals };
+  }
+
   onClear() {
     this.multi = [];
     this.graphVisible = false;
-  }
-
-  buildDevastation(input: any) {
-    const { a, r, theta, capitalRange, k } = input;
-    const devastation = new Devastation(a, r, theta, capitalRange, k, 0.5);
-    const probs = devastation.probabilities;
-    const capitals = devastation.capitals;
-    return { probs, capitals };
   }
 }

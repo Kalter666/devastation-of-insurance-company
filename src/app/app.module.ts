@@ -8,9 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { GraphComponent } from './chart/graph/graph.component';
+import { Model2Component } from './model2/model2.component';
+import { HeaderComponent } from './main/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, ChartComponent, GraphComponent],
+  declarations: [AppComponent, ChartComponent, GraphComponent, Model2Component, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
