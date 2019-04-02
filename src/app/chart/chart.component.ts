@@ -36,9 +36,8 @@ export class ChartComponent implements OnInit {
       devastation.capitals,
       input.theta
     );
-    this.multi.push(res);
-    this.graphVisible = false;
-    setTimeout(() => (this.graphVisible = true), 1);
+    this.multi = [...this.multi, res];
+    this.graphVisible = true;
   }
 
   onClear() {
