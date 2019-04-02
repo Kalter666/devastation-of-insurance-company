@@ -27,13 +27,14 @@ export class Devastation2 {
   }
 
   private findA(i: number): number {
+    return this.a0;
     if (i === 0) {
       return this.a0;
     }
     return +mathjs.factorial(i) * Math.pow(this.a0, i);
   }
 
-  private findDevast() {
+  private findProbs() {
     let i = 0;
     const p = [];
     const left = 1 / (1 + this.theta);
@@ -46,8 +47,8 @@ export class Devastation2 {
     this.P = p;
   }
 
-  get devastations(): number[] {
-    this.findDevast();
+  get probs(): number[] {
+    this.findProbs();
     return this.P;
   }
 

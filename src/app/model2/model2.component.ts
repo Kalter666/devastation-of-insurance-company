@@ -14,7 +14,7 @@ export class Model2Component implements OnInit {
   graphVisible = false;
 
   calculateGroup = new FormGroup({
-    a: new FormControl(11, [Validators.required]),
+    a: new FormControl(1, [Validators.required]),
     theta: new FormControl(0.5, [Validators.required]),
     capitalRange: new FormGroup({
       min: new FormControl(0, [Validators.required]),
@@ -45,7 +45,7 @@ export class Model2Component implements OnInit {
       theta,
       a
     );
-    const probs = devastation.devastations;
+    const probs = devastation.probs;
     const capitals = devastation.capitals;
     return { probs, capitals };
   }
