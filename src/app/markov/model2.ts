@@ -11,7 +11,7 @@ export class Devastation2 {
     max: number = 20,
     theta: number = 0.5,
     a0: number = 1,
-    approx: number = 1
+    approx: number = 0.1
   ) {
     this.theta = theta;
     this.a0 = a0;
