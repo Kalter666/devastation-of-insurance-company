@@ -10,6 +10,9 @@ import { ChartComponent } from './chart/chart.component';
 import { HeaderComponent } from './main/header/header.component';
 import { Model2Component } from './model2/model2.component';
 import { GraphComponent } from './shared/graph/graph.component';
+import { MarkovChainComponent } from './markov-chain/markov-chain.component';
+import { TableComponent } from './markov-chain/table/table.component';
+import { InputFormComponent } from './markov-chain/input-form/input-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { GraphComponent } from './shared/graph/graph.component';
     ChartComponent,
     GraphComponent,
     Model2Component,
-    HeaderComponent
+    HeaderComponent,
+    MarkovChainComponent,
+    TableComponent,
+    InputFormComponent
   ],
   imports: [
     BrowserModule,

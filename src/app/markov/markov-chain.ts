@@ -1,18 +1,29 @@
-import { matrix, Matrix, multiply, transpose, MathArray, pow } from 'mathjs';
+import { MathType, Matrix, matrix, multiply, pow, transpose } from 'mathjs';
 
 export class MarkovChain {
   private init: Matrix;
-  private u: Matrix | MathArray;
+  private u: MathType;
 
-  constructor(p: number[][], u: number[]) {
+  constructor(p: number[][], u?: number[]) {
     this.init = matrix(p);
-    this.u = transpose(u);
+    if (u) {
+      this.u = transpose(u);
+    }
+  }
+  /**
+   * @returns Matrix of probabilities of "i" iteration (day, week, hour etc.)
+   * @description It's computing matrix of probabilities of events
+   */
+  getProb(i: number): MathType {
+    if (this.u) {
+      return multiply(this.u, pow(this.init, i));
+    }
+    return pow(this.init, i);
   }
 
-  getProb(i: number): Matrix | MathArray {
-    return multiply(this.u, pow(this.init, i));
-  }
-
+  /**
+   * @returns Initial matrix of probabilities
+   */
   get initial(): Matrix {
     return this.init;
   }
