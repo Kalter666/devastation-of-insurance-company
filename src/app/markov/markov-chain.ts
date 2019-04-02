@@ -9,19 +9,11 @@ export class MarkovChain {
     this.u = transpose(u);
   }
 
-  private findProb(i: number): Matrix {
-    return; // TODO: implement this method
+  getProb(i: number): Matrix | MathArray {
+    return multiply(this.u, pow(this.init, i));
   }
 
   get initial(): Matrix {
     return this.init;
-  }
-
-  getProb(i: number): Matrix {
-    return this.findProb(i);
-  }
-
-  get Probs(): Matrix[] {
-    return this.Probs;
   }
 }
