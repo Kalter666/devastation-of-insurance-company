@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { DataPreparer } from '../shared/data-preparer';
-import { Devastation2 } from './../markov/model2';
+import { Devastation2 } from '../services/model2';
 
 @Component({
   selector: 'app-model2',
