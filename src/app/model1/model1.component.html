@@ -1,0 +1,70 @@
+<div class="columns">
+  <div class="column is-4">
+    <form class="form-group" [formGroup]="calculateGroup">
+      <div formGroupName="capitalRange">
+        <p class="text-left">
+          m = n = 1, а плотности распределения страховых пре­мий и страховых выплат являются экспоненциальными с
+          параметрами а и b
+          соответственно. В этом случае истинная вероятность разорения имеет вид</p>
+        <span class="text-left is-size-4 font-weight-bold">
+          Капитал:
+        </span>
+        <div class="field">
+          <label class="label">Min: </label>
+          <div class="control">
+            <input type="number" class="input" formControlName="min">
+          </div>
+
+          <label class="label">Max: </label>
+          <div class="control">
+            <input type="number" class="input" formControlName="max">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">
+          Премии:
+        </label>
+        <div class="control">
+          <input type="number" class="input" formControlName="a">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">
+          Выплаты:
+        </label>
+        <div class="control">
+          <input type="number" class="input" formControlName="b">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">
+          &Theta;:
+        </label>
+        <div class="control">
+          <input type="number" class="input" formControlName="theta">
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-success" (click)="onCalculate()">Calculate</button>
+        </div>
+        <div class="control">
+          <button class="button is-danger" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <div *ngIf="graphVisible; else notValid">
+      <app-graph [multi]="multi"></app-graph>
+    </div>
+    <ng-template #notValid>
+      <h1>Check yor input!</h1>
+    </ng-template>
+  </div>
+</div>

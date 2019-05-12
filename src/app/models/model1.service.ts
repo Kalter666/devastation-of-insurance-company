@@ -1,5 +1,3 @@
-import { Injectable } from '@angular/core';
-
 import { eval as mathEval } from 'mathjs';
 
 export interface CapitalRange {
@@ -9,15 +7,12 @@ export interface CapitalRange {
 
 export const defaultEpsilon = 1e-1;
 
-@Injectable({
-  providedIn: 'root'
-})
 export class Model1Service {
-  S: number[];
-  a: number;
-  b: number;
-  theta: number;
-  P: number[];
+  private S: number[];
+  private a: number;
+  private b: number;
+  private theta: number;
+  private P: number[];
 
   constructor(
     capitalRange: CapitalRange,
@@ -50,7 +45,7 @@ export class Model1Service {
     const capitals = this.S;
     const P: number[] = [];
     for (const S of capitals) {
-      const scope = {...baseScope, S};
+      const scope = { ...baseScope, S };
       const res = mathEval(formula, scope);
       P.push(res);
     }
