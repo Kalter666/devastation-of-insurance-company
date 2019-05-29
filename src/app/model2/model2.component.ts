@@ -13,6 +13,8 @@ export class Model2Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
 
+  isShowHint = false;
+
   calculateGroup = new FormGroup({
     a: new FormControl(1, [Validators.required]),
     theta: new FormControl(0.5, [Validators.required]),
@@ -22,9 +24,9 @@ export class Model2Component implements OnInit {
     })
   });
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onCalculate() {
     const input = this.calculateGroup.value;
@@ -53,5 +55,9 @@ export class Model2Component implements OnInit {
   onClear() {
     this.multi = [];
     this.graphVisible = false;
+  }
+
+  onShowHint() {
+    this.isShowHint = !this.isShowHint;
   }
 }

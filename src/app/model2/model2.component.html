@@ -1,6 +1,14 @@
 <div class="columns">
   <div class="column is-4">
-    <form class="form-group" [formGroup]="calculateGroup">
+    <div
+      (click)="onShowHint()"
+      class="button is-text"
+      *ngIf="!isShowHint"
+    >Показать описание</div>
+    <form
+      class="form-group"
+      [formGroup]="calculateGroup"
+    >
       <div formGroupName="capitalRange">
         <span class="text-left is-size-4 font-weight-bold">
           Capital Range:
@@ -8,12 +16,20 @@
         <div class="field">
           <label class="label">Min: </label>
           <div class="control">
-            <input type="number" class="input" formControlName="min">
+            <input
+              type="number"
+              class="input"
+              formControlName="min"
+            >
           </div>
 
           <label class="label">Max: </label>
           <div class="control">
-            <input type="number" class="input" formControlName="max">
+            <input
+              type="number"
+              class="input"
+              formControlName="max"
+            >
           </div>
         </div>
       </div>
@@ -23,7 +39,11 @@
           Payment value:
         </label>
         <div class="control">
-          <input type="number" class="input" formControlName="a">
+          <input
+            type="number"
+            class="input"
+            formControlName="a"
+          >
         </div>
       </div>
 
@@ -32,21 +52,50 @@
           &Theta;:
         </label>
         <div class="control">
-          <input type="number" class="input" formControlName="theta">
+          <input
+            type="number"
+            class="input"
+            formControlName="theta"
+          >
         </div>
       </div>
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-success" (click)="onCalculate()">Calculate</button>
+          <button
+            class="button is-success"
+            (click)="onCalculate()"
+          >Calculate</button>
         </div>
         <div class="control">
-          <button class="button is-danger" (click)="onClear()">Clear</button>
+          <button
+            class="button is-danger"
+            (click)="onClear()"
+          >Clear</button>
         </div>
       </div>
     </form>
   </div>
   <div class="column">
+    <div
+      *ngIf="isShowHint"
+      class="notification"
+    >
+      <button
+        class="delete"
+        (click)="onShowHint()"
+      ></button>
+      Выплаты принимают имеют экспоненциальное распределение:
+      <img
+        src="assets/model2_exponential.svg"
+        alt="model2_exponential"
+      >
+      Истинная вероятность разорения принимает вид:
+      <img
+        src="assets/model2_formula.svg"
+        alt="model2_formula"
+      >
+    </div>
     <div *ngIf="graphVisible; else notValid">
       <app-graph [multi]="multi"></app-graph>
     </div>
