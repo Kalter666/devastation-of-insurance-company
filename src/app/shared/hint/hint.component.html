@@ -1,0 +1,15 @@
+<div
+  (click)="onShowHint()"
+  class="button is-text"
+  *ngIf="!isShowHint"
+>Показать описание</div>
+<div
+  *ngIf="isShowHint"
+  class="notification"
+>
+  <button
+    class="delete"
+    (click)="onShowHint()"
+  ></button>
+  <div [innerHtml]="hint"></div>
+</div>

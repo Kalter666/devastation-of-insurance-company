@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { DataPreparer } from '../shared/data-preparer';
 import { Devastation2 } from '../models/model2';
+import { DataPreparer } from '../shared/data-preparer';
+import { model2Hint } from '../shared/hint/hints';
 
 @Component({
   selector: 'app-model2',
@@ -14,6 +15,7 @@ export class Model2Component implements OnInit {
   graphVisible = false;
 
   isShowHint = false;
+  hint = model2Hint;
 
   calculateGroup = new FormGroup({
     a: new FormControl(1, [Validators.required]),
