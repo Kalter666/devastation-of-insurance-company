@@ -14,7 +14,6 @@ export class Model2Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
 
-  isShowHint = false;
   hint = model2Hint;
 
   calculateGroup = new FormGroup({
@@ -57,9 +56,5 @@ export class Model2Component implements OnInit {
   onClear() {
     this.multi = [];
     this.graphVisible = false;
-  }
-
-  onShowHint() {
-    this.isShowHint = !this.isShowHint;
   }
 }
