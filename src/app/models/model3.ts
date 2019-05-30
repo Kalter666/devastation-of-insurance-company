@@ -26,31 +26,34 @@ export class Model3 {
 
   private buildCapitals(capitalRange: CapitalRange, epsilon: number) {
     const S: number[] = [];
-    for (let i = capitalRange.min; i < capitalRange.max; i += epsilon) {
+    for (let i = capitalRange.min; i <= capitalRange.max; i += epsilon) {
       S.push(i);
     }
     this.S = S;
   }
 
   private findExp(S: number, a: number, n: number) {
-    const formula = 'exp( (S-a*n) / (a * (1 + theta)) )';
+    const formula = 'e ^ ( (S-a*n) / (a * (1 + theta)) )';
     const scope = {
       S,
       a,
       n,
       theta: this.theta
     };
-    return +mathEval(formula, scope);
+    const res = +mathEval(formula, scope);
+    return res;
   }
 
   private findSum(s: number) {
     const a = this.a;
     const terms: number[] = [];
+    const scopes = [];
     const formula = '(-1)^n * (s-a*1)^n / (1+a*1)^n * a^n * n! * x';
 
     for (let n = 0; n <= this.k; n++) {
       const x = this.findExp(s, a, n);
       const scope = { s, a, n, x };
+      scopes.push(scope);
       const term = +mathEval(formula, scope);
       terms.push(term);
     }
