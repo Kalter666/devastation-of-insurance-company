@@ -1,7 +1,7 @@
 import { defaultEpsilon } from '../shared/constants';
 import { CapitalRange } from './interfaces';
 
-import { eval as mathEval } from 'mathjs';
+import { eval as mathEval, simplify } from 'mathjs';
 
 export class Model3 {
   private theta: number;
@@ -29,38 +29,26 @@ export class Model3 {
     this.S = S;
   }
 
-  private findExp(S: number, a: number, n: number) {
-    const formula = 'exp( (S-a*n) / (a * (1 + theta)) )';
-    const scope = {
-      S,
-      a,
-      n,
-      theta: this.theta
-    };
-    return +mathEval(formula, scope);
-  }
-
   private findSum(s: number) {
     const a = s / this.k;
     const terms: number[] = [];
     const scopes = [];
-    const formula = '( (-1)^ n * (s-a*n)^n ) / ( (1+a*n)^ n * a^n * n! ) * x';
-    // const formula = '(-1)^ n * 2 ^ n';
+    const formula = '( (-1)^ n * (s-a*n)^n ) / ( (1 + theta)^ n * a^n * n! ) * exp( (s-a*n) / ((1 + theta) * a) )';
 
     for (let n = 0; n <= this.k; n++) {
-      const x = this.findExp(s, a, n);
-      const scope = { s, a, n, x };
+      const scope = { s, a, n, theta: this.theta };
       scopes.push(scope);
       const term = +mathEval(formula, scope);
       terms.push(term);
     }
 
     const reducer = (res: number, val: number) => res += val;
-    return terms.reduce(reducer, 0);
+    const sum = terms.reduce(reducer, 0);
+    return sum;
   }
 
   private findThetaTerm() {
-    const formula = 'theta / (1 - theta)';
+    const formula = 'theta / (1 + theta)';
     const scope = { theta: this.theta };
     const term = mathEval(formula, scope);
     this.thetaTerm = +term;

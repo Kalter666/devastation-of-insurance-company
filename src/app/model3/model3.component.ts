@@ -20,7 +20,7 @@ export class Model3Component implements OnInit {
     theta: new FormControl(0.5, [Validators.required]),
     k: new FormControl(10, [Validators.required]),
     capitalRange: new FormGroup({
-      min: new FormControl(0, [Validators.required]),
+      min: new FormControl(1, [Validators.required]),
       max: new FormControl(20, [Validators.required])
     })
   });
