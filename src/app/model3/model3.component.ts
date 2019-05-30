@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Model3 as m3 } from '../models/model3';
 import { DataPreparer as dp } from '../shared/data-preparer';
+import { model3Hint } from '../shared/hint/hints';
 
 @Component({
   selector: 'app-model3',
@@ -13,10 +14,9 @@ export class Model3Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
 
-  hint = 'model3Hint';
+  hint = model3Hint;
 
   calculateGroup = new FormGroup({
-    a: new FormControl(1, [Validators.required]),
     theta: new FormControl(0.5, [Validators.required]),
     k: new FormControl(10, [Validators.required]),
     capitalRange: new FormGroup({
@@ -41,9 +41,8 @@ export class Model3Component implements OnInit {
     this.graphVisible = true;
   }
 
-  buildDevastation({ a, theta, capitalRange, k }) {
+  buildDevastation({ theta, capitalRange, k }) {
     const devastation = new m3(
-      a,
       theta,
       capitalRange,
       k

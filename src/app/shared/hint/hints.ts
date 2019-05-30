@@ -23,3 +23,7 @@ m = n = 1, где m — частота выплат страховых прем�
 <img src="assets/model1_formula.svg" alt="model1_formula"></p>
 где θ - нагрузка страховой премии, S - капитал на данный момент времени.
 `;
+
+export const model3Hint = `
+<img src="assets/model3_formula.svg" alt="model1_formula">
+`;
