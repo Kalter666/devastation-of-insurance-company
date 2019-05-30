@@ -6,10 +6,10 @@
     >
       <div formGroupName="capitalRange">
         <span class="text-left is-size-4 font-weight-bold">
-          Capital Range:
+          Капитал:
         </span>
         <div class="field">
-          <label class="label">Min: </label>
+          <label class="label">Минимальное значение: </label>
           <div class="control">
             <input
               type="number"
@@ -18,7 +18,7 @@
             >
           </div>
 
-          <label class="label">Max: </label>
+          <label class="label">Максимальное значение: </label>
           <div class="control">
             <input
               type="number"
@@ -31,7 +31,7 @@
 
       <div class="field">
         <label class="label">
-          Payment value:
+          Выплаты:
         </label>
         <div class="control">
           <input
@@ -44,7 +44,7 @@
 
       <div class="field">
         <label class="label">
-          &Theta;:
+          Нагрузка страховой премии:
         </label>
         <div class="control">
           <input
@@ -60,13 +60,13 @@
           <button
             class="button is-success"
             (click)="onCalculate()"
-          >Calculate</button>
+          >Рассчитать</button>
         </div>
         <div class="control">
           <button
             class="button is-danger"
             (click)="onClear()"
-          >Clear</button>
+          >Очистить график</button>
         </div>
       </div>
     </form>
