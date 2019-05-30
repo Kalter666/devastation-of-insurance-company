@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Model1Service } from '../models/model1.service';
 import { DataPreparer } from '../shared/data-preparer';
+import { model1Hint } from '../shared/hint/hints';
 
 @Component({
   selector: 'app-model1',
@@ -10,6 +11,8 @@ import { DataPreparer } from '../shared/data-preparer';
   styleUrls: ['./model1.component.scss']
 })
 export class Model1Component implements OnInit {
+  hint = model1Hint;
+
   multi: any[] = [];
   graphVisible = false;
   calculateGroup = new FormGroup({
