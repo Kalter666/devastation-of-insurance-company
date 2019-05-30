@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Devastation2 } from '../models/model2';
 import { DataPreparer } from '../shared/data-preparer';
+import { thetaValidator } from '../shared/directives/theta.directive';
 import { model2Hint } from '../shared/hint/hints';
 
 @Component({
@@ -18,7 +19,7 @@ export class Model2Component implements OnInit {
 
   calculateGroup = new FormGroup({
     a: new FormControl(1, [Validators.required]),
-    theta: new FormControl(0.5, [Validators.required]),
+    theta: new FormControl(0.5, [Validators.required, thetaValidator()]),
     capitalRange: new FormGroup({
       min: new FormControl(0, [Validators.required]),
       max: new FormControl(20, [Validators.required])

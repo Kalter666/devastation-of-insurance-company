@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { debounceTime } from 'rxjs/operators';
+
 import { Model1Service } from '../models/model1.service';
 import { DataPreparer } from '../shared/data-preparer';
+import { thetaValidator } from '../shared/directives/theta.directive';
 import { model1Hint } from '../shared/hint/hints';
 
 @Component({
@@ -18,16 +21,24 @@ export class Model1Component implements OnInit {
   calculateGroup = new FormGroup({
     a: new FormControl(1, [Validators.required]),
     b: new FormControl(1, [Validators.required]),
-    theta: new FormControl(0.5, [Validators.required]),
+    theta: new FormControl(0.5, [Validators.required, thetaValidator()]),
     capitalRange: new FormGroup({
       min: new FormControl(0, [Validators.required]),
       max: new FormControl(20, [Validators.required])
     })
   });
 
+  min = this.calculateGroup.value.capitalRange.min;
+  max = this.calculateGroup.value.capitalRange.max;
+
   constructor() { }
 
   ngOnInit() {
+    this.onCalculate();
+
+    this.calculateGroup.valueChanges
+      .pipe(debounceTime(1))
+      .subscribe(this.onValueChanges);
   }
 
   onCalculate() {
@@ -52,6 +63,11 @@ export class Model1Component implements OnInit {
   onClear() {
     this.multi = [];
     this.graphVisible = false;
+  }
+
+  onValueChanges({ capitalRange: { min, max } }) {
+    this.min = min;
+    this.max = max;
   }
 
 }

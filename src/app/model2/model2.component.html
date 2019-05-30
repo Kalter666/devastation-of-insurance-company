@@ -51,6 +51,7 @@
             type="number"
             class="input"
             formControlName="theta"
+            step="0.01"
           >
         </div>
       </div>
@@ -60,6 +61,7 @@
           <button
             class="button is-success"
             (click)="onCalculate()"
+            [disabled]="calculateGroup.valid"
           >Рассчитать</button>
         </div>
         <div class="control">

@@ -26,20 +26,12 @@ export class Devastation2 {
     return s;
   }
 
-  private findA(i: number): number {
-    return this.a0;
-    if (i === 0) {
-      return this.a0;
-    }
-    return +mathjs.factorial(i) * Math.pow(this.a0, i);
-  }
-
   private findProbs() {
     let i = 0;
     const p = [];
     const left = 1 / (1 + this.theta);
+    const a = this.a0;
     for (const cap of this.S) {
-      const a = this.findA(i);
       const right = Math.exp(-((this.theta * cap) / (a * (1 + this.theta))));
       p.push(left * right);
       i++;

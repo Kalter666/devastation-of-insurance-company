@@ -1,6 +1,9 @@
 <div class="columns">
   <div class="column is-4">
-    <form class="form-group" [formGroup]="calculateGroup">
+    <form
+      class="form-group"
+      [formGroup]="calculateGroup"
+    >
       <div formGroupName="capitalRange">
         <span class="text-left is-size-4 font-weight-bold">
           Капитал:
@@ -8,12 +11,23 @@
         <div class="field">
           <label class="label">Минимальное значение: </label>
           <div class="control">
-            <input type="number" class="input" formControlName="min">
+            <input
+              type="number"
+              class="input"
+              formControlName="min"
+              min="0"
+              [max]="max"
+            >
           </div>
 
           <label class="label">Максимальное значение: </label>
           <div class="control">
-            <input type="number" class="input" formControlName="max">
+            <input
+              type="number"
+              class="input"
+              formControlName="max"
+              [min]="min"
+            >
           </div>
         </div>
       </div>
@@ -23,7 +37,11 @@
           Премии:
         </label>
         <div class="control">
-          <input type="number" class="input" formControlName="a">
+          <input
+            type="number"
+            class="input"
+            formControlName="a"
+          >
         </div>
       </div>
 
@@ -32,7 +50,11 @@
           Выплаты:
         </label>
         <div class="control">
-          <input type="number" class="input" formControlName="b">
+          <input
+            type="number"
+            class="input"
+            formControlName="b"
+          >
         </div>
       </div>
 
@@ -41,16 +63,28 @@
           Нагрузка страховой премии:
         </label>
         <div class="control">
-          <input type="number" class="input" formControlName="theta">
+          <input
+            type="number"
+            class="input"
+            formControlName="theta"
+            step="0.01"
+          >
         </div>
       </div>
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-success" (click)="onCalculate()">Рассчитать</button>
+          <button
+            class="button is-success"
+            (click)="onCalculate()"
+            [disabled]="calculateGroup.valid"
+          >Рассчитать</button>
         </div>
         <div class="control">
-          <button class="button is-danger" (click)="onClear()">Очистить график</button>
+          <button
+            class="button is-danger"
+            (click)="onClear()"
+          >Очистить график</button>
         </div>
       </div>
     </form>
