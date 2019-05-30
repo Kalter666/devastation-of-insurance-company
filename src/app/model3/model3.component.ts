@@ -13,11 +13,12 @@ export class Model3Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
 
-  hint = 'model2Hint';
+  hint = 'model3Hint';
 
   calculateGroup = new FormGroup({
     a: new FormControl(1, [Validators.required]),
     theta: new FormControl(0.5, [Validators.required]),
+    k: new FormControl(10, [Validators.required]),
     capitalRange: new FormGroup({
       min: new FormControl(0, [Validators.required]),
       max: new FormControl(20, [Validators.required])
@@ -40,12 +41,12 @@ export class Model3Component implements OnInit {
     this.graphVisible = true;
   }
 
-  buildDevastation({ a, theta, capitalRange }) {
+  buildDevastation({ a, theta, capitalRange, k }) {
     const devastation = new m3(
-      capitalRange.min,
-      capitalRange.max,
+      a,
       theta,
-      a
+      capitalRange,
+      k
     );
     const probs = devastation.probs;
     const capitals = devastation.capitals;

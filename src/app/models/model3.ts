@@ -33,7 +33,7 @@ export class Model3 {
   }
 
   private findExp(S: number, a: number, n: number) {
-    const formula = 'exp( (S-a*n) / (a * (1 + theta))';
+    const formula = 'exp( (S-a*n) / (a * (1 + theta)) )';
     const scope = {
       S,
       a,
@@ -46,7 +46,7 @@ export class Model3 {
   private findSum(s: number) {
     const a = this.a;
     const terms: number[] = [];
-    const formula = '(-1)^n * (s-a*n)^n / (1+a*n)^n * a^n * n! * x';
+    const formula = '(-1)^n * (s-a*1)^n / (1+a*1)^n * a^n * n! * x';
 
     for (let n = 0; n <= this.k; n++) {
       const x = this.findExp(s, a, n);
