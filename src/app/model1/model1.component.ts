@@ -51,6 +51,7 @@ export class Model1Component implements OnInit {
     );
     this.multi = [...this.multi, res];
     this.graphVisible = true;
+    return input;
   }
 
   buildDev({ a, b, theta, capitalRange }) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 import { Devastation2 } from '../models/model2';
 import { DataPreparer } from '../shared/data-preparer';
@@ -26,9 +27,18 @@ export class Model2Component implements OnInit {
     })
   });
 
+  min = this.calculateGroup.value.capitalRange.min;
+  max = this.calculateGroup.value.capitalRange.max;
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.onCalculate();
+
+    this.calculateGroup.valueChanges
+      .pipe(debounceTime(1))
+      .subscribe(this.onValueChanges);
+  }
 
   onCalculate() {
     const input = this.calculateGroup.value;
@@ -57,5 +67,10 @@ export class Model2Component implements OnInit {
   onClear() {
     this.multi = [];
     this.graphVisible = false;
+  }
+
+  onValueChanges({ capitalRange: { min, max } }) {
+    this.min = min;
+    this.max = max;
   }
 }

@@ -15,6 +15,8 @@
               type="number"
               class="input"
               formControlName="min"
+              min="0"
+              [max]="max"
             >
           </div>
 
@@ -24,6 +26,7 @@
               type="number"
               class="input"
               formControlName="max"
+              [min]="min"
             >
           </div>
         </div>
@@ -61,7 +64,7 @@
           <button
             class="button is-success"
             (click)="onCalculate()"
-            [disabled]="calculateGroup.valid"
+            [disabled]="!calculateGroup.valid"
           >Рассчитать</button>
         </div>
         <div class="control">
