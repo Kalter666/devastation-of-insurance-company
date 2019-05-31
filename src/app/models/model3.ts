@@ -30,12 +30,12 @@ export class Model3 {
   }
 
   private findSum(s: number) {
-    const a = s / this.k;
     const terms: number[] = [];
     const scopes = [];
     const formula = '( (-1)^ n * (s-a*n)^n ) / ( (1 + theta)^ n * a^n * n! ) * exp( (s-a*n) / ((1 + theta) * a) )';
 
     for (let n = 0; n <= this.k; n++) {
+      const a = s / this.k + this.theta;
       const scope = { s, a, n, theta: this.theta };
       scopes.push(scope);
       const term = +mathEval(formula, scope);

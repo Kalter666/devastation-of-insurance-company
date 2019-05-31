@@ -17,17 +17,19 @@ export class Model3Component implements OnInit {
   hint = model3Hint;
 
   calculateGroup = new FormGroup({
-    theta: new FormControl(0.5, [Validators.required]),
+    theta: new FormControl(0.1, [Validators.required]),
     k: new FormControl(10, [Validators.required]),
     capitalRange: new FormGroup({
-      min: new FormControl(1, [Validators.required]),
+      min: new FormControl(0, [Validators.required]),
       max: new FormControl(20, [Validators.required])
     })
   });
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.onCalculate();
+  }
 
   onCalculate() {
     const input = this.calculateGroup.value;
