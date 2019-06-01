@@ -18,7 +18,7 @@ export class Model3Component implements OnInit {
 
   calculateGroup = new FormGroup({
     theta: new FormControl(0.1, [Validators.required]),
-    k: new FormControl(10, [Validators.required]),
+    k: new FormControl(25, [Validators.required]),
     capitalRange: new FormGroup({
       min: new FormControl(0, [Validators.required]),
       max: new FormControl(20, [Validators.required])
