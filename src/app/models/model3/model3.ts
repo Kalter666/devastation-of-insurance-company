@@ -1,7 +1,7 @@
-import { defaultEpsilon } from '../shared/constants';
-import { CapitalRange } from './interfaces';
+import { eval as mathEval } from 'mathjs';
 
-import { eval as mathEval, simplify } from 'mathjs';
+import { defaultEpsilon } from '../../shared/constants';
+import { CapitalRange } from '../interfaces';
 
 export class Model3 {
   private theta: number;

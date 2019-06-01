@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Model3 as m3 } from '../models/model3';
-import { DataPreparer as dp } from '../shared/data-preparer';
+import { Model3 as m3 } from './model3';
+import { DataPreparer as dp } from '../../shared/data-preparer';
 
 @Component({
   selector: 'app-model3',

@@ -1,7 +1,7 @@
 import { eval as mathEval } from 'mathjs';
 
-import { defaultEpsilon } from './../shared/constants';
-import { CapitalRange } from './interfaces';
+import { defaultEpsilon } from '../../shared/constants';
+import { CapitalRange } from '../interfaces';
 
 export class Model1Service {
   private S: number[];

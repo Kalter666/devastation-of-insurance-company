@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { WelcomeComponent } from './main/welcome/welcome.component';
-import { Model1Component } from './model1/model1.component';
-import { Model2Component } from './model2/model2.component';
-import { Model3Component } from './model3/model3.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { Model1Component } from './models/model1/model1.component';
+import { Model2Component } from './models/model2/model2.component';
+import { Model3Component } from './models/model3/model3.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
