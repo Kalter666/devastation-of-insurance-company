@@ -14,6 +14,7 @@ import { Model2Component } from './model2/model2.component';
 import { Model3Component } from './model3/model3.component';
 import { GraphComponent } from './shared/graph/graph.component';
 import { HintComponent } from './shared/hint/hint.component';
+import { WelcomeComponent } from './main/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HintComponent } from './shared/hint/hint.component';
     HeaderComponent,
     Model3Component,
     HintComponent,
+    WelcomeComponent,
   ],
   imports: [
     AppRoutingModule,
