@@ -2,7 +2,7 @@
   (click)="onShowHint()"
   class="button is-text"
   *ngIf="!isShowHint"
->Показать описание</div>
+>{{ 'HINTS.SHOW_HINT' | translate }}</div>
 <div
   *ngIf="isShowHint"
   class="notification"

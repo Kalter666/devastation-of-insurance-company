@@ -6,10 +6,10 @@
     >
       <div formGroupName="capitalRange">
         <span class="text-left is-size-4 font-weight-bold">
-          Капитал:
+            {{ 'MODELS.FORMS.CAPITAL' | translate }}:
         </span>
         <div class="field">
-          <label class="label">Минимальное значение: </label>
+          <label class="label">{{ 'MODELS.FORMS.MIN' | translate }}: </label>
           <div class="control">
             <input
               type="number"
@@ -20,7 +20,7 @@
             >
           </div>
 
-          <label class="label">Максимальное значение: </label>
+          <label class="label">{{ 'MODELS.FORMS.MAX' | translate }}: </label>
           <div class="control">
             <input
               type="number"
@@ -34,7 +34,7 @@
 
       <div class="field">
         <label class="label">
-          Выплаты:
+            {{ 'MODELS.FORMS.PAYMENTS' | translate }}:
         </label>
         <div class="control">
           <input
@@ -47,7 +47,7 @@
 
       <div class="field">
         <label class="label">
-          Нагрузка страховой премии:
+            {{ 'MODELS.FORMS.LOAD' | translate }}:
         </label>
         <div class="control">
           <input
@@ -65,13 +65,13 @@
             class="button is-success"
             (click)="onCalculate()"
             [disabled]="!calculateGroup.valid"
-          >Рассчитать</button>
+          >{{ 'MODELS.FORMS.CALCULATE' | translate }}</button>
         </div>
         <div class="control">
           <button
             class="button is-danger"
             (click)="onClear()"
-          >Очистить график</button>
+          >{{ 'MODELS.FORMS.CLEAR_GRAPH' | translate }}</button>
         </div>
       </div>
     </form>
@@ -82,7 +82,7 @@
       <app-graph [multi]="multi"></app-graph>
     </div>
     <ng-template #notValid>
-      <h1>Check yor input!</h1>
+      <h1>{{ 'MODELS.FORMS.WARNING' | translate }}</h1>
     </ng-template>
   </div>
 </div>

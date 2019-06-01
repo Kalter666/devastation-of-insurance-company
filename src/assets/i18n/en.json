@@ -8,8 +8,22 @@
     "THIRD_MODEL": "Model 3"
   },
   "HINTS": {
+    "SHOW_HINT": "DESCRIPTION",
     "FIRST_MODEL": "Payments accept have exponential distribution: <br> <img src=\"assets/model2_exponential.svg\" alt=\"model2_exponential\"><br>The true probability of ruin takes the form: <br> <img src=\"assets/model2_formula.svg\" alt=\"model2_formula\"> <br> where θ is the insurance premium load, S is the capital at a given time.",
     "SECOND_MODEL": "<p class=\"text-left\"> m = n = 1, where m is the frequency of insurance premium payments, n is the frequency of insurance payments, and the distribution density of insurance premiums and insurance payments are exponential with parameters a and b respectively. In this case true probability of ruin is: <br> <img src=\"assets/model1_formula.svg\" alt=\"model1_formula\"><\/p>where θ is the insurance premium load, S is the capital at a given time.",
     "THIRD_MODEL": "Insurance payments are constant and the intensity of the flow of insurance payments does not change.<br><img src=\"assets\/model3_formula.svg\" alt=\"model1_formula\"><br>where θ is the insurance premium load, S is the capital at a given point in time.<br>in the area of <b>ak ≤ S ≤ a(k +1)<\/b>."
+  },
+  "MODELS": {
+    "FORMS": {
+      "CAPITAL": "Capital",
+      "MIN": "Min",
+      "MAX": "Max",
+      "PREMIUM": "Premium",
+      "PAYMENTS": "Payments",
+      "LOAD": "Load insurance premium",
+      "CALCULATE": "Calculate",
+      "CLEAR_GRAPH": "Clear graph",
+      "WARNING": "Check yor input and hit button \"Calculate\" one more time!"
+    }
   }
 }
