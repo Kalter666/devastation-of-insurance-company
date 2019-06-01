@@ -73,7 +73,7 @@
     </form>
   </div>
   <div class="column">
-    <app-hint [hint]="hint"></app-hint>
+    <app-hint [hint]="'HINTS.THIRD_MODEL' | translate"></app-hint>
     <div *ngIf="graphVisible; else notValid">
       <app-graph [multi]="multi"></app-graph>
     </div>

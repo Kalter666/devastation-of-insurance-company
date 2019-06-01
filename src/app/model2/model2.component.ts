@@ -5,7 +5,6 @@ import { debounceTime } from 'rxjs/operators';
 import { Devastation2 } from '../models/model2';
 import { DataPreparer } from '../shared/data-preparer';
 import { thetaValidator } from '../shared/directives/theta.directive';
-import { model2Hint } from '../shared/hint/hints';
 
 @Component({
   selector: 'app-model2',
@@ -15,8 +14,6 @@ import { model2Hint } from '../shared/hint/hints';
 export class Model2Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
-
-  hint = model2Hint;
 
   calculateGroup = new FormGroup({
     a: new FormControl(1, [Validators.required]),

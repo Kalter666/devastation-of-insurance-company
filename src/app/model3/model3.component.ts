@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Model3 as m3 } from '../models/model3';
 import { DataPreparer as dp } from '../shared/data-preparer';
-import { model3Hint } from '../shared/hint/hints';
 
 @Component({
   selector: 'app-model3',
@@ -13,8 +12,6 @@ import { model3Hint } from '../shared/hint/hints';
 export class Model3Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
-
-  hint = model3Hint;
 
   calculateGroup = new FormGroup({
     theta: new FormControl(0.1, [Validators.required]),
