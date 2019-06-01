@@ -25,5 +25,9 @@
       "CLEAR_GRAPH": "Clear graph",
       "WARNING": "Check yor input and hit button \"Calculate\" one more time!"
     }
+  },
+  "GRAPH": {
+    "xAxisLabel": "Capital",
+    "yAxisLabel": "Probability of ruin"
   }
 }

@@ -16,9 +16,7 @@ export class GraphComponent implements OnInit {
   gradient = false;
   showLegend = false;
   showXAxisLabel = true;
-  xAxisLabel = 'S - capital';
   showYAxisLabel = true;
-  yAxisLabel = 'P(S)';
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
