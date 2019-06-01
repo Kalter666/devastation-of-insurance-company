@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AppTranslateModule } from './app-translate.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './main/header/header.component';
 import { Model1Component } from './model1/model1.component';
@@ -24,12 +25,13 @@ import { HintComponent } from './shared/hint/hint.component';
     HintComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    NgxChartsModule,
+    AppTranslateModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    NgxChartsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
