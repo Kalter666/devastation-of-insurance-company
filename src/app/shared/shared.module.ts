@@ -6,11 +6,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { GraphComponent } from './graph/graph.component';
 import { HintComponent } from './hint/hint.component';
+import { AnalyzeComponent } from './analyze/analyze.component';
 
 @NgModule({
   declarations: [
     GraphComponent,
-    HintComponent
+    HintComponent,
+    AnalyzeComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { HintComponent } from './hint/hint.component';
     NgxChartsModule,
     FormsModule,
     GraphComponent,
-    HintComponent
+    HintComponent,
+    AnalyzeComponent
   ]
 })
 export class SharedModule { }

@@ -1,7 +1,7 @@
 export class DataPreparer {
   static buildSingle(probs: number[], capitals: number[], theta: number) {
     const res = {
-      name: `theta = ${theta}`,
+      name: `${theta}`,
       series: []
     };
     for (let i = 0; i < capitals.length; i++) {

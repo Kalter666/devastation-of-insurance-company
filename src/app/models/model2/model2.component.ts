@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { DataAnalyzer } from 'src/app/shared/data-analyzer';
 
-import { Devastation2 } from './model2';
 import { DataPreparer } from '../../shared/data-preparer';
 import { thetaValidator } from '../../shared/directives/theta.directive';
+import { Devastation2 } from './model2';
 
 @Component({
   selector: 'app-model2',
@@ -14,6 +15,10 @@ import { thetaValidator } from '../../shared/directives/theta.directive';
 export class Model2Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
+
+  mins = [];
+  maxs = [];
+  averages = [];
 
   calculateGroup = new FormGroup({
     a: new FormControl(1, [Validators.required]),
@@ -47,6 +52,11 @@ export class Model2Component implements OnInit {
     );
     this.multi = [...this.multi, res];
     this.graphVisible = true;
+
+    const dataAnalyser = new DataAnalyzer(this.multi);
+    this.mins = dataAnalyser.min;
+    this.maxs = dataAnalyser.max;
+    this.averages = dataAnalyser.average;
   }
 
   buildDevastation({ a, theta, capitalRange }) {
@@ -64,6 +74,9 @@ export class Model2Component implements OnInit {
   onClear() {
     this.multi = [];
     this.graphVisible = false;
+    this.maxs = null;
+    this.mins = null;
+    this.averages = null;
   }
 
   onValueChanges({ capitalRange: { min, max } }) {

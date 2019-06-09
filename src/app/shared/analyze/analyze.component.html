@@ -1,0 +1,55 @@
+<hr>
+<div class="columns">
+  <div class="column">
+    <table
+      *ngIf="mins"
+      class="table is-bordered"
+    >
+      <thead class="has-text-weight-semibold">
+        <td>{{ 'MODELS.FORMS.LOAD' | translate }}</td>
+        <td>{{ 'MODELS.FORMS.CAPITAL' | translate }}</td>
+        <td>{{ 'MODELS.FORMS.MIN_VALUES' | translate }}</td>
+      </thead>
+      <tr *ngFor="let val of mins">
+        <td>{{ val.name }}</td>
+        <td>{{ val.min.capital }}</td>
+        <td>{{ val.min.min }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="column">
+    <table
+      *ngIf="maxs"
+      class="table is-bordered"
+    >
+      <thead class="has-text-weight-semibold">
+        <td>{{ 'MODELS.FORMS.LOAD' | translate }}</td>
+        <td>{{ 'MODELS.FORMS.CAPITAL' | translate }}</td>
+        <td>{{ 'MODELS.FORMS.MAX_VALUES' | translate }}</td>
+      </thead>
+      <tr *ngFor="let val of maxs">
+        <td>{{ val.name }}</td>
+        <td>{{ val.max.capital }}</td>
+        <td>{{ val.max.max }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="column">
+      <table
+        *ngIf="averages"
+        class="table is-bordered"
+      >
+        <thead class="has-text-weight-semibold">
+          <td>{{ 'MODELS.FORMS.LOAD' | translate }}</td>
+          <td>{{ 'MODELS.FORMS.AVERAGE_VALUES' | translate }}</td>
+        </thead>
+        <tr *ngFor="let val of averages">
+          <td>{{ val.name }}</td>
+          <td>{{ val.average }}</td>
+        </tr>
+      </table>
+    </div>
+</div>
+<hr>

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
-import { Model1Service } from './model1';
+import { DataAnalyzer } from '../../shared/data-analyzer';
 import { DataPreparer } from '../../shared/data-preparer';
 import { thetaValidator } from '../../shared/directives/theta.directive';
+import { Model1Service } from './model1';
 
 @Component({
   selector: 'app-model1',
@@ -28,6 +29,10 @@ export class Model1Component implements OnInit {
   min = this.calculateGroup.value.capitalRange.min;
   max = this.calculateGroup.value.capitalRange.max;
 
+  mins = [];
+  maxs = [];
+  averages = [];
+
   constructor() { }
 
   ngOnInit() {
@@ -48,7 +53,11 @@ export class Model1Component implements OnInit {
     );
     this.multi = [...this.multi, res];
     this.graphVisible = true;
-    return input;
+
+    const dataAnalyser = new DataAnalyzer(this.multi);
+    this.mins = dataAnalyser.min;
+    this.maxs = dataAnalyser.max;
+    this.averages = dataAnalyser.average;
   }
 
   buildDev({ a, b, theta, capitalRange }) {
@@ -61,6 +70,9 @@ export class Model1Component implements OnInit {
   onClear() {
     this.multi = [];
     this.graphVisible = false;
+    this.maxs = null;
+    this.mins = null;
+    this.averages = null;
   }
 
   onValueChanges({ capitalRange: { min, max } }) {

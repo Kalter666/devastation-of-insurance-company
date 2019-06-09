@@ -20,10 +20,13 @@
       "MAX": "Max",
       "PREMIUM": "Premium",
       "PAYMENTS": "Payments",
-      "LOAD": "Load insurance premium",
+      "LOAD": "Load insurance premiums and/or payments",
       "CALCULATE": "Calculate",
       "CLEAR_GRAPH": "Clear graph",
-      "WARNING": "Check yor input and hit button \"Calculate\" one more time!"
+      "WARNING": "Check yor input and hit button \"Calculate\" one more time!",
+      "MIN_VALUES": "Min values",
+      "MAX_VALUES": "Max values",
+      "AVERAGE_VALUES": "Average values of probability of ruin"
     }
   },
   "GRAPH": {

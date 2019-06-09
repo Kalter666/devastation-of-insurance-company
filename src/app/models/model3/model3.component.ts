@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataAnalyzer } from 'src/app/shared/data-analyzer';
 
-import { Model3 as m3 } from './model3';
 import { DataPreparer as dp } from '../../shared/data-preparer';
+import { Model3 as m3 } from './model3';
 
 @Component({
   selector: 'app-model3',
@@ -12,6 +13,10 @@ import { DataPreparer as dp } from '../../shared/data-preparer';
 export class Model3Component implements OnInit {
   multi: any[] = [];
   graphVisible = false;
+
+  mins = [];
+  maxs = [];
+  averages = [];
 
   calculateGroup = new FormGroup({
     theta: new FormControl(0.1, [Validators.required]),
@@ -38,6 +43,11 @@ export class Model3Component implements OnInit {
     );
     this.multi = [...this.multi, res];
     this.graphVisible = true;
+
+    const dataAnalyser = new DataAnalyzer(this.multi);
+    this.mins = dataAnalyser.min;
+    this.maxs = dataAnalyser.max;
+    this.averages = dataAnalyser.average;
   }
 
   buildDevastation({ theta, capitalRange, k }) {
@@ -54,6 +64,9 @@ export class Model3Component implements OnInit {
   onClear() {
     this.multi = [];
     this.graphVisible = false;
+    this.maxs = null;
+    this.mins = null;
+    this.averages = null;
   }
 
 }
