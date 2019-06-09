@@ -1,5 +1,3 @@
-import * as mathjs from 'mathjs';
-
 export class Devastation2 {
   private S: number[];
   private P: number[];
